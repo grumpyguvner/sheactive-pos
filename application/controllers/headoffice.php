@@ -78,9 +78,18 @@ log_message("DEBUG","start=".$startref.",limit=".$limit);
                                                         (SELECT name FROM colours WHERE (colours.uuid = products.colourid))
                                                     )
                                                 ) AS description,
+                                                IFNULL((SELECT name FROM genders WHERE (genders.uuid = styles.genderid AND genders.inactive = 0)),
+                                                    ''
+                                                ) AS gender,
+                                                IFNULL((SELECT name FROM category_overrides WHERE (category_overrides.categoryid = styles.default_categoryid AND category_overrides.site = '".$this->config->item('ho_branch')."' AND category_overrides.inactive = 0)),
+                                                    (SELECT name FROM categories WHERE (categories.uuid = styles.default_categoryid))
+                                                ) AS category,
+                                                IFNULL((SELECT name FROM sport_overrides WHERE (sport_overrides.sportid = styles.default_sportid AND sport_overrides.site = '".$this->config->item('ho_branch')."' AND sport_overrides.inactive = 0)),
+                                                    (SELECT name FROM sports WHERE (sports.uuid = styles.default_sportid))
+                                                ) AS sport,
                                                 IFNULL((SELECT name FROM producttypes_translations WHERE (producttypes_translations.producttypeid = styles.producttypeid AND producttypes_translations.site = '".$this->config->item('ho_branch')."' AND producttypes_translations.inactive = 0)),
                                                     (SELECT name FROM producttypes WHERE (producttypes.uuid = styles.producttypeid))
-                                                ) AS category,
+                                                ) AS producttype,
                                                 IFNULL((SELECT name FROM suppliers_translations WHERE (suppliers_translations.supplierid = styles.supplierid AND suppliers_translations.site = '".$this->config->item('ho_branch')."' AND suppliers_translations.inactive = 0)),
                                                     (SELECT name FROM suppliers WHERE (suppliers.uuid = styles.supplierid))
                                                 ) AS supplier,
@@ -140,14 +149,17 @@ log_message('debug',"record ".$recordsProcessed);
 				$reference = $lineProduct[0];
 				$name = $lineProduct[1];
 				$description = $lineProduct[2];
-				$category = strtoupper($lineProduct[3]);
-				$supplier = strtoupper($lineProduct[4]);
-				$price = $lineProduct[5];
-				$reduction_price = $lineProduct[6];
-				$reduction_percent = $lineProduct[7];
-				$wholesale_price = $lineProduct[8];
-				$supplierref = $lineProduct[9];
-				$modifieddate = $lineProduct[10];
+				$gender = strtoupper($lineProduct[3]);
+				$category = strtoupper($lineProduct[4]);
+				$sport = strtoupper($lineProduct[5]);
+				$producttype = strtoupper($lineProduct[6]);
+				$supplier = strtoupper($lineProduct[7]);
+				$price = $lineProduct[8];
+				$reduction_price = $lineProduct[9];
+				$reduction_percent = $lineProduct[10];
+				$wholesale_price = $lineProduct[11];
+				$supplierref = $lineProduct[12];
+				$modifieddate = $lineProduct[13];
 
                                 $sellingprice = $price;
                                 if($reduction_price>0){
@@ -193,7 +205,10 @@ log_message('debug',"record ".$recordsProcessed);
                                 $item_data = array(
                                 'name'=>$name,
                                 'description'=>$description,
+                                'gender'=>$gender,
                                 'category'=>$category,
+                                'sport'=>$sport,
+                                'producttype'=>$producttype,
                                 'supplier_id'=>$id_supplier,
                                 'supplierref'=>$supplierref,
                                 'item_number'=>$reference,
@@ -329,18 +344,18 @@ log_message('debug',"record ".$recordsProcessed);
                                 log_message('debug',"************ BEGINING NEXT ITEM ************");
                                 log_message('debug','plu --> '.$item_plu.' transfer_id --> '.$transfer_id.' quantity --> '.$transfer_quantity);
 
-		echo $transfer_id.' ¦ ';
-		echo $transfer_time.' ¦ ';
-		echo $transfer_comment.' ¦ ';
-		echo $item_plu.' ¦ ';
-		echo $item_ean.' ¦ ';
-		echo $item_name.' ¦ ';
-		echo $item_description.' ¦ ';
-		echo $transfer_quantity.' ¦ ';
-		echo $item_cost_price.' ¦ ';
-		echo $item_unit_price.' ¦ ';
-		echo $supplier.' ¦ ';
-		echo $item_supplier_ref.' ¦ ';
+		echo $transfer_id.' ï¿½ ';
+		echo $transfer_time.' ï¿½ ';
+		echo $transfer_comment.' ï¿½ ';
+		echo $item_plu.' ï¿½ ';
+		echo $item_ean.' ï¿½ ';
+		echo $item_name.' ï¿½ ';
+		echo $item_description.' ï¿½ ';
+		echo $transfer_quantity.' ï¿½ ';
+		echo $item_cost_price.' ï¿½ ';
+		echo $item_unit_price.' ï¿½ ';
+		echo $supplier.' ï¿½ ';
+		echo $item_supplier_ref.' ï¿½ ';
 		echo '<br />';
 
 				$recordsProcessed=$recordsProcessed+1;
