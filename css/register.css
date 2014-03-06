@@ -1,0 +1,168 @@
+#register_wrapper
+{
+	float:left;
+	width:70%;
+        font-family: Verdana, Arial, Sans-Serif;
+	font-size:13px;
+}
+#mode_form
+{
+	position:relative;
+	background-color:#DDD;
+	padding: 3px 0px 3px 5px;
+}
+
+#mode_form span
+{
+	font-weight:bold;
+}
+
+#mode
+{
+    font-size: 20px;
+}
+
+#find_by_location_form,
+#add_item_form,
+#add_plu_form
+{
+	position:relative;
+	background-color:#BBBBBB;
+	width:100%;
+	padding: 8px 0px 8px 0px;
+	
+}
+
+#new_item_button_register
+{
+	position:absolute;
+	top:3px;
+	right:4px;
+}
+
+#find_by_location_form input,
+#add_item_form input,
+#add_plu_form input
+{
+ 	border: 1px solid #ccc;
+ 	padding: 2px;
+ 	
+}
+
+#location_label,#item_label,#plu_label,#customer_label
+{
+	font-weight:bold;
+}
+
+#find_by_location_form label,
+#add_item_form label,
+#add_plu_form label
+{
+	margin: 0px 5px 0px 5px;
+}
+
+#register
+{
+	position:relative;
+	width:100%;
+	padding:0px;
+	border-collapse:collapse;	
+}
+
+#register th
+{	
+	background-color:#CE6C6C;
+	padding:5px;
+	text-align:center;
+	color:#FFFFFF;
+}
+
+#register td
+{
+	background-color:#EEEEEE;
+	padding:3px;
+	text-align:center;
+}
+
+#overall_sale
+{
+	float:left;
+	margin-left:4px;
+	background-color:#BBBBBB;
+	width:28%;
+	padding:5px;
+	font-family:Arial;
+	font-size:13px;
+	
+}
+
+#sale_details
+{
+	position:relative;
+	width:100%;
+	margin-top:5px;
+	border-top:2px solid #000;
+}
+
+#finish_sale
+{
+	position:relative;
+}
+
+#Payment_Types
+{
+	float:left;
+	width:100%;
+	margin-top:5px;
+	border-top:2px solid #000;
+	background-color:#DDD;
+	margin-bottom:0px;
+	clear:both;
+}
+
+#Cancel_sale
+{
+	float:left;
+	width:100%;
+	margin-top:5px;
+	clear:both;
+}
+
+#No_sale
+{
+	float:left;
+	width:100%;
+	margin-top:5px;
+	clear:both;
+}
+
+h3.delete_btn
+{
+    margin: 2px;
+    padding: 0;
+    border: 0;
+    width: 30px; height: 30px;
+    background: url("/images/delete.png") no-repeat;
+    text-indent: -9999px;
+    cursor: pointer; /* hand-shaped cursor */
+}
+h3.discount_btn
+{
+    margin: 2px;
+    padding: 0;
+    border: 0;
+    width: 30px; height: 30px;
+    background: url("/images/discount.png") no-repeat;
+    text-indent: -9999px;
+    cursor: pointer; /* hand-shaped cursor */
+}
+#edit_item {
+  margin: 2px;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  background: url("/images/save.png") no-repeat;
+  text-indent: -9999px;
+  cursor: pointer; /* hand-shaped cursor */
+}

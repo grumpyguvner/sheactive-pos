@@ -1,0 +1,20 @@
+#payment_display
+{
+        text-align:right;
+	float:left;
+	min-width:400px;
+	max-width:400px;
+	min-height:50px;
+	max-height:50px;
+	padding-top:20px;
+	padding-right:10px;
+	padding-bottom:-10px;
+	border: groove #CE6C6C;
+	clear:both;
+}
+
+#payment_display span
+{
+	font-family:Arial;
+	font-size:42px;
+}
