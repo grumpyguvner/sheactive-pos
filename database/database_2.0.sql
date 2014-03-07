@@ -10,5 +10,6 @@ UPDATE `pos_headoffice` SET `value` = '2.0' WHERE `key` = 'ho_version';
 -- 
 ALTER TABLE `pos_items`
  ADD COLUMN `gender` varchar(255) DEFAULT NULL AFTER `name`,
+ ADD COLUMN `season` varchar(255) DEFAULT NULL AFTER `gender`,
  ADD COLUMN `sport` varchar(255) DEFAULT NULL AFTER `category`,
  ADD COLUMN `producttype` varchar(255) DEFAULT NULL AFTER `sport`;

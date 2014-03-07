@@ -81,6 +81,7 @@ log_message("DEBUG","start=".$startref.",limit=".$limit);
                                                 IFNULL((SELECT name FROM genders WHERE (genders.uuid = styles.genderid AND genders.inactive = 0)),
                                                     ''
                                                 ) AS gender,
+                                                IFNULL(styles.season,'') AS season,
                                                 IFNULL((SELECT name FROM category_overrides WHERE (category_overrides.categoryid = styles.default_categoryid AND category_overrides.site = '".$this->config->item('ho_branch')."' AND category_overrides.inactive = 0)),
                                                     (SELECT name FROM categories WHERE (categories.uuid = styles.default_categoryid))
                                                 ) AS category,
@@ -150,16 +151,17 @@ log_message('debug',"record ".$recordsProcessed);
 				$name = $lineProduct[1];
 				$description = $lineProduct[2];
 				$gender = strtoupper($lineProduct[3]);
-				$category = strtoupper($lineProduct[4]);
-				$sport = strtoupper($lineProduct[5]);
-				$producttype = strtoupper($lineProduct[6]);
-				$supplier = strtoupper($lineProduct[7]);
-				$price = $lineProduct[8];
-				$reduction_price = $lineProduct[9];
-				$reduction_percent = $lineProduct[10];
-				$wholesale_price = $lineProduct[11];
-				$supplierref = $lineProduct[12];
-				$modifieddate = $lineProduct[13];
+				$season = strtoupper($lineProduct[4]);
+				$category = strtoupper($lineProduct[5]);
+				$sport = strtoupper($lineProduct[6]);
+				$producttype = strtoupper($lineProduct[7]);
+				$supplier = strtoupper($lineProduct[8]);
+				$price = $lineProduct[9];
+				$reduction_price = $lineProduct[10];
+				$reduction_percent = $lineProduct[11];
+				$wholesale_price = $lineProduct[12];
+				$supplierref = $lineProduct[13];
+				$modifieddate = $lineProduct[14];
 
                                 $sellingprice = $price;
                                 if($reduction_price>0){
@@ -206,6 +208,7 @@ log_message('debug',"record ".$recordsProcessed);
                                 'name'=>$name,
                                 'description'=>$description,
                                 'gender'=>$gender,
+                                'season'=>$season,
                                 'category'=>$category,
                                 'sport'=>$sport,
                                 'producttype'=>$producttype,
